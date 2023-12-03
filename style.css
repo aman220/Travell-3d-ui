@@ -1,0 +1,212 @@
+/* Reset default margin and padding */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styles */
+body {
+  overflow-y: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header styles */
+header {
+  z-index: 3;
+  align-items: center;
+}
+
+.navbar {
+  position: relative;
+  z-index: 3;
+}
+
+.lineardark {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, #1B1E28, transparent);
+}
+
+.nav-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+}
+
+.nav-link {
+  color: #ffff;
+  cursor: pointer;
+  font-size: large;
+  margin: 0 20px;
+  z-index: 2;
+  text-decoration: none;
+  text-transform: capitalize;
+  border-width: 26px;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+}
+
+.logo {
+  font-weight: bold;
+
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  z-index: 1;
+
+}
+
+.center-bottom {
+  align-self: center;
+  margin-bottom: 20px;
+  width: auto;
+  z-index: 1;
+}
+
+.bottom-image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#dynamicSection {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transition: opacity 1s ease-in-out;
+}
+
+.text-behind {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.bold-text {
+  font-weight: bold;
+  font-size: 150px;
+  text-align: center;
+  color: transparent;
+  text-transform: uppercase;
+  font-family: tahoma;
+  -webkit-text-stroke: 5px white;
+  transform: scaleY(1.5);
+}
+
+.buttonimage {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  margin-bottom: 50px;
+  background-color: #2044FF;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonimage:hover {
+  background-color: #1a36b3;
+  /* Darker shade of the original color on hover */
+}
+
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animated-element {
+  /* Set initial state or any other necessary styles */
+  animation: fadeIn 1s ease-in-out, slideFromTop 1s ease-in-out;
+  /* Add vendor prefixes if needed */
+}
+
+/* Apply animations to elements */
+.navbar,
+.text-behind,
+.bottom-image {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.center-bottom {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.navbar {
+  animation-name: slideFromTop;
+}
+
+.text-behind {
+  animation-name: fadeIn;
+}
+
+.bottom-image,
+.center-bottom {
+  animation-name: slideFromBottom;
+}
+

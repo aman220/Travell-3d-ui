@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>3D Travel Website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
+        integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <section id="dynamicSection" class="background-transition" style="height: 100vh; background-size: cover; ">
+        <header>
+            <div class="navbar">
+                <div class="lineardark"></div>
+                <ul class="nav-items">
+                    <li><a href="#" class="nav-link">HOME</a></li>
+                    <li><a href="#" class="nav-link">EXPLORE</a></li>
+                    <li><a href="#" class="logo"><img src="./Travel.svg" alt="" width="50px" height="50px"></a></li>
+                    <li><a href="#" class="nav-link">ABOUT</a></li>
+                    <li><a href="#" class="nav-link">PACKAGE</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="text-behind animated-element " data-animation="fadeIn">
+            <h1 style="color:white">TRAVEL TO</h1>
+            <span class="bold-text">MEXICO</span>
+
+        </div>
+        <div> <button class="buttonimage">GET PACKAGE</button></div>
+        <div class="image-container">
+            <img src="./backpack.svg" alt="Backpack" class="center-bottom animated-element"
+                data-animation="slideFromBottom">
+            <img src="./bottom.svg" alt="Bottom" class="bottom-image animated-element" data-animation="slideFromBottom">
+        </div>
+    </section>
+
+    <script>
+        // Array of background image URLs and corresponding text values
+        const images = [
+            { url: './india.jpg', text: 'INDIA' },
+            { url: './maxico.svg', text: 'MEXICO' },
+            { url: './image 1.svg', text: 'ISTANBUL' },
+            // Add more image URLs and text values as needed
+        ];
+
+        let index = 0;
+        function changeBackgroundAndText() {
+            const section = document.getElementById('dynamicSection');
+            const text = document.querySelector('.bold-text');
+            const animatedElements = document.querySelectorAll('.animated-element');
+
+            // Update background image smoothly
+            section.style.backgroundImage = `url('${images[index].url}')`;
+
+            // Reset animation names
+            animatedElements.forEach(element => {
+                element.style.animationName = 'none';
+                void element.offsetWidth; // Trigger reflow to apply style change immediately
+                element.style.animationName = element.dataset.animation;
+            });
+
+            // Update text
+            text.textContent = images[index].text;
+
+            // Increment index or loop back to the start
+            index = (index + 1) % images.length;
+        }
+
+        // Call the function initially and set an interval to change the background and text
+        changeBackgroundAndText();
+        setInterval(changeBackgroundAndText, 5000); // Change every 5 seconds (5000 milliseconds)
+    </script>
+
+
+</body>
+
+</html>
